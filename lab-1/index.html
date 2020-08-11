@@ -14,9 +14,12 @@
 		<h4
 		v-for="i in 12"
 		>{{num}} x {{i}} = {{x(i)}}</h4>
+		<h4>ผลรวม(Sum) = {{sum}}</h4>
 	</div>
 
 	<script>
+		let sum_i = 0
+		let sumall = 0
 		let app = new Vue({
 			el: '#app',
 			data: {
@@ -28,39 +31,13 @@
 				}
 			},
 			computed : {
-				x2 : function(){
-					return this.num*2
-				},
-				X3 : function(){
-					return this.num*3
-				},
-				X4 : function(){
-					return this.num*4
-				},
-				X5 : function(){
-					return this.num*5
-				},
-				X6 : function(){
-					return this.num*6
-				},
-				X7 : function(){
-					return this.num*7
-				},
-				X8 : function(){
-					return this.num*8
-				},
-				X9 : function(){
-					return this.num*9
-				},
-				X10 : function(){
-					return this.num*10
-				},
-				X11 : function(){
-					return this.num*11
-				},
-				X12 : function(){
-					return this.num*12
-				},
+				sum : function(){
+					for (let i = 1; i <= 12; i++) {
+						sum_i = this.num*i 
+						sumall = sum_i + sumall
+					}
+					return sumall
+				}
 			}
 		})
 	</script>
