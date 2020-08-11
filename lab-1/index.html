@@ -11,18 +11,9 @@
 		<input type="number" v-model='num'>
 		<div class="space"></div>
 		<h3>สูตรคูณแม่ : {{num}}</h3>
-		<h4>{{num}} x 1 = {{num}}</h4>
-		<h4>{{num}} x 2 = {{x2}}</h4>
-		<h4>{{num}} x 3 = {{X3}}</h4>
-		<h4>{{num}} x 4 = {{X4}}</h4>
-		<h4>{{num}} x 5 = {{X5}}</h4>
-		<h4>{{num}} x 6 = {{X6}}</h4>
-		<h4>{{num}} x 7 = {{X7}}</h4>
-		<h4>{{num}} x 8 = {{X8}}</h4>
-		<h4>{{num}} x 9 = {{X9}}</h4>
-		<h4>{{num}} x 10 = {{X10}}</h4>
-		<h4>{{num}} x 11 = {{X11}}</h4>
-		<h4>{{num}} x 12 = {{X12}}</h4>
+		<h4
+		v-for="i in 12"
+		>{{num}} x {{i}} = {{x(i)}}</h4>
 	</div>
 
 	<script>
@@ -30,6 +21,11 @@
 			el: '#app',
 			data: {
 				num: 1
+			},
+			methods: {
+				x : function(row){
+					return this.num*row
+				}
 			},
 			computed : {
 				x2 : function(){
