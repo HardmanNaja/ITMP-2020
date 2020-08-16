@@ -9,14 +9,17 @@
 </head>
 
 <body class="paper">
-	<div id="app">
-		<input type="number" v-model='num'>
-		<input type="number" v-model='row'>
-		<div class="space"></div>
-		<h3>สูตรคูณแม่ : {{num}}</h3>
-		<h5>แม่ก่อนหน้า -> แม่ {{before_num}}</h5>
-		<h4 v-for="i in r">{{num}} x {{i}} = {{x(i)}}</h4>
-		<h4>ผลรวม(Summation) = {{sum}}</h4>
+	<div class="box">
+		<div id="app">
+			<h3>
+				สูตรคูณแม่ :
+				<input type="number" v-model='num'>
+				แถว :
+				<input type="number" v-model='row'>
+			</h3>
+			<h4 v-for="i in r">{{num}} x {{i}} = {{x(i)}}</h4>
+			<h4 class="red">ผลรวม(Summation) = {{sum}}</h4>
+		</div>
 	</div>
 
 	<script>
@@ -24,8 +27,8 @@
 			el: '#app',
 			data: {
 				num: 1,
-				before_num : 0,
-				row:12
+				before_num: 0,
+				row: 12
 			},
 			methods: {
 				x: function (row) {
@@ -41,12 +44,12 @@
 					return sumall
 				},
 
-				r : function(){
+				r: function () {
 					return parseInt(this.row)
 				}
 			},
-			watch : {
-				num: function(a,b){
+			watch: {
+				num: function (a, b) {
 					this.before_num = b
 				}
 			}
