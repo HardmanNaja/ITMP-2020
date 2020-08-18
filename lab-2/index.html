@@ -13,7 +13,7 @@
 		<h3>Name : {{person.name}}</h3>
 		<h3>Title : {{person.title}}</h3>
 		<h3>Blurb : {{person.blurb}}</h3>
-		<img src="`{person.image.sprite}`" alt=""> <!--"`{person.image.sprite}`" -->
+		<img src="${person.image.full}">
 
 		<h2 v-for="u in users" :data-id="u.id" @click="viewBio(u)">{{u.name}}</h2>
 	</div>
@@ -38,12 +38,18 @@
 			data: {
 				person: {
 					"name": '..loading',
-					"title": '..loading'
+					"title": '..loading',
+					"image": {
+						"full":""
+					}
 				},
 				users:
 				{
 					"name": '..loading',
-					"title": '..loading'
+					"title": '..loading',
+					"image": {
+						"full":""
+						}
 				},
 			}
 		})
