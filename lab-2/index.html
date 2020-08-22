@@ -13,8 +13,11 @@
 		<h3>Name : {{person.name}}</h3>
 		<h3>Title : {{person.title}}</h3>
 		<h3>Blurb : {{person.blurb}}</h3>
-		<img :src="`http://ddragon.leagueoflegends.com/cdn/10.16.1/img/champion/`+person.image.full"> <!--`  :src=“‘http://something/‘+person.image.full”-->	
-
+		<!-- <img :src="`http://ddragon.leagueoflegends.com/cdn/10.16.1/img/champion/`+person.image.full"> -->
+		<!-- Aatrox_0.jpg -->
+		<div id="demo">
+			<img :src="`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/`+person.image.full">
+		</div>
 		<h2 v-for="u in users" :data-id="u.id" @click="viewBio(u)">{{u.name}}</h2>
 	</div>
 
@@ -25,30 +28,33 @@
 			.then(json => {
 				console.log(json)
 				app.users = json.data
-				app.person = json.data
+				app.person = app.users.Aatrox
 			})
 		let app = new Vue({
 			el: '#app',
 			methods: {
 				viewBio: function (user) {
 					this.person = user
+					var str = document.getElementById("demo").innerHTML;
+					var res = str.replace(".png", "_0.jpg");
+					document.getElementById("demo").innerHTML = res; //ผมลองใช้ดูแล้วภาพไม่เปลี่ยน
 				}
 			},
 			data: {
 				person: {
 					"name": '..loading',
 					"title": '..loading',
-					"image": {
-						"full":""
+					"info": {
+						"attack": "aaa"
 					}
 				},
 				users:
 				{
 					"name": '..loading',
 					"title": '..loading',
-					"image": {
-						"full":""
-						}
+					"info": {
+						"attack": "aaa"
+					}
 				},
 			}
 		})
