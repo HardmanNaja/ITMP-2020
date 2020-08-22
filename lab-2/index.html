@@ -13,7 +13,7 @@
 		<h3>Name : {{person.name}}</h3>
 		<h3>Title : {{person.title}}</h3>
 		<h3>Blurb : {{person.blurb}}</h3>
-		<img src="${person.image.full}">
+		<img :src="`http://ddragon.leagueoflegends.com/cdn/10.16.1/img/champion/`+person.image.full"> <!--`  :src=“‘http://something/‘+person.image.full”-->	
 
 		<h2 v-for="u in users" :data-id="u.id" @click="viewBio(u)">{{u.name}}</h2>
 	</div>
@@ -26,7 +26,6 @@
 				console.log(json)
 				app.users = json.data
 				app.person = json.data
-				app.img = json.data.image
 			})
 		let app = new Vue({
 			el: '#app',
