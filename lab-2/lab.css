@@ -1,0 +1,9 @@
+#name{
+    display: inline-block;
+}
+
+.info{
+    margin: auto;
+    text-align: center;
+    width: 60%;
+}

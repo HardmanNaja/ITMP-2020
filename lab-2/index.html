@@ -10,15 +10,23 @@
 
 <body>
 	<div id="app">
-		<h3>Name : {{person.name}}</h3>
-		<h3>Title : {{person.title}}</h3>
-		<h3>Blurb : {{person.blurb}}</h3>
-		<!-- <img :src="`http://ddragon.leagueoflegends.com/cdn/10.16.1/img/champion/`+person.image.full"> -->
-		<!-- Aatrox_0.jpg -->
-		<div id="demo">
-			<img :src="`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/`+person.image.full">
+		<center>
+			<h1><u>League of Legends Champions Info</u></h1>
+			<img :src="`http://ddragon.leagueoflegends.com/cdn/10.16.1/img/champion/`+person.image.full">
+		</center>
+		<div class="info">
+			<h3>Name : {{person.name}}</h3>
+			<h3>Title : {{person.title}}</h3>
+			<h3><u>Blurb</u></h3>
+			<h3>{{person.blurb}}</h3>
+			<h3>⚔️ Attack : {{person.info.attack}} ⚔️</h3>
+			<h3>🛡️ Defense : {{person.info.defense}} 🛡️</h3>
+			<h3>🔮 Magic : {{person.info.magic}} 🔮</h3>
+			<h3>🔰 Difficulty : {{person.info.difficulty}} 🔰</h3>
 		</div>
-		<h2 v-for="u in users" :data-id="u.id" @click="viewBio(u)">{{u.name}}</h2>
+		<!-- <img :src="`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/`+person.image.full"> -->
+		<h2>Character List: </h2>
+		<h2 v-for="u in users" :data-id="u.id" @click="viewBio(u)" id="name">✦{{u.name}}&nbsp;&nbsp;</h2>
 	</div>
 
 
@@ -35,9 +43,9 @@
 			methods: {
 				viewBio: function (user) {
 					this.person = user
-					var str = document.getElementById("demo").innerHTML;
-					var res = str.replace(".png", "_0.jpg");
-					document.getElementById("demo").innerHTML = res; //ผมลองใช้ดูแล้วภาพไม่เปลี่ยน
+					// var str = document.getElementById("demo").innerHTML;
+					// var res = str.replace(".png", "_0.jpg");
+					// document.getElementById("demo").innerHTML = res; //ผมลองใช้ดูแล้วภาพไม่เปลี่ยน
 				}
 			},
 			data: {
