@@ -22,9 +22,10 @@
 				'--l':l+'%',
 			}"
 				:data-pick="i == pick"
+				@click="check(i)"
 				></a-dot>
 			</main>
-		</section>
+		</section> 
 		<section id="canvas_footer">
 			<div>
 				{{score}} คะแนน
@@ -33,6 +34,7 @@
 	</div>
 
 	<script>
+
 		let picklight = "10%" //เลือกว่ารอบนี้ อันพิเศษจะมีความสว่าง 20%
 		document.registerElement('a-dot') //ให้ vue รู้จัก a-dot
 
@@ -40,7 +42,6 @@
 			let shift = (stop-start)+1
 			return Math.floor(Math.random()*100%shift)+start
 		}
-
 		let app = new Vue({
 			el:'#canvas',
 			data:{
@@ -52,8 +53,18 @@
 				l:80,//ความสว่างของสีทั่วไปในรอบนี้
 			},
 			methods: {
-
-			}
+				check: function(e){
+					console.log(e)
+					if (e == this.pick) {
+						app.correct()
+					}
+				},
+				correct: function(){
+					this.row = rand(2,6)
+					this.pick = rand(1,this.row * this.row) //แก้ด้วยเด้อ
+					// console.log(this.num)
+				}
+			} 
 		})
 		//ทำให้แคนวาสมี --picklight ตามที่กำหนดไว้ข้างบนนี้
 		document.querySelector('#canvas').style.setProperty('--picklight',picklight);
