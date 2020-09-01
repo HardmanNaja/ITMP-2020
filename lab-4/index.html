@@ -67,10 +67,6 @@
 						this.score -= 100
 					}
 				}
-				else{
-					alert("Time Out!!!");
-					window.location.reload();
-				}
 			},
 				correct: function(){
 					this.lv += 1
@@ -88,6 +84,8 @@
 				app.time--
 			}else{
 				clearInterval(counter)
+				alert("Time Out!!!");
+				window.location.reload();
 			}
 		},1000);
 	</script>
