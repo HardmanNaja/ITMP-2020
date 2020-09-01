@@ -8,6 +8,9 @@
 </head>
 <body>
 	<div id="canvas">
+		<section>
+			<center><h1>Lv. {{lv}}</h1></center> 
+		</section>
 		<section id="canvas_header">
 			<div>
 				เหลือเวลา {{time}} วินาที
@@ -34,34 +37,45 @@
 	</div>
 
 	<script>
-
-		let picklight = "10%" //เลือกว่ารอบนี้ อันพิเศษจะมีความสว่าง 20%
-		document.registerElement('a-dot') //ให้ vue รู้จัก a-dot
+		let picklight = "10%" //"10%"//เลือกว่ารอบนี้ อันพิเศษจะมีความสว่าง 20%
+		//document.registerElement('a-dot') //ให้ vue รู้จัก a-dot
 
 		function rand(start,stop){//สร้างฟังก์ชัน random ไว้ใช้
 			let shift = (stop-start)+1
 			return Math.floor(Math.random()*100%shift)+start
 		}
+
 		let app = new Vue({
 			el:'#canvas',
 			data:{
 				row:3, //จำนวนแถวที่จะมีในรอบนี้
-				h:200, // hue ในรอบนี้
+				h:800, // hue ในรอบนี้
 				time:20, //เวลาเริ่มต้น
 				score:0, //คะแนนเริ่มต้น
 				pick:1, //หมายเลขวงกลมที่จะสีแตกต่างจากก้อนอื่นๆ
 				l:80,//ความสว่างของสีทั่วไปในรอบนี้
+				lv:1,
 			},
 			methods: {
 				check: function(e){
-					console.log(e)
+				if (this.time > 0) {
 					if (e == this.pick) {
 						app.correct()
+						this.score += 100
 					}
-				},
+					else{
+						this.score -= 100
+					}
+				}
+				else{
+					alert("Time Out!!!");
+					window.location.reload();
+				}
+			},
 				correct: function(){
-					this.row = rand(2,6)
-					this.pick = rand(1,this.row * this.row) //แก้ด้วยเด้อ
+					this.lv += 1
+					this.row += 1
+					this.pick = rand(1,this.row * this.row)
 					// console.log(this.num)
 				}
 			} 
