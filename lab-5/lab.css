@@ -67,12 +67,14 @@ div.box{
 	background-color: #333;
 }
 .box._toggle{
-	background-color: yellow;
-	transition: none;
-	opacity: .5;
+	background-image: url(img/right.png);
+	background-size: 100%;
+	background-repeat: no-repeat;
 }
 .box._toggle[data-isrightarrow="0"]{
-	background-color: red;
+	background-image: url(img/up.png);
+	background-size: 100%;
+	background-repeat: no-repeat;
 }
 
 
