@@ -1,3 +1,77 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>The Members - ITKMITL Multimedia Programming 2563</title>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="lab.css">
+</head>
+
+<body>
+	<div id="app">
+		<center>
+			<h1><u>League of Legends Champions Info</u></h1>
+			<img :src="`http://ddragon.leagueoflegends.com/cdn/10.24.1/img/champion/`+person.image.full">
+		</center>
+		<div class="info">
+			<h3>Name : {{person.name}}</h3>
+			<h3>Title : {{person.title}}</h3>
+			<h3><u>Blurb</u></h3>
+			<h3>{{person.blurb}}</h3>
+			<h3>⚔️ Attack : {{person.info.attack}} ⚔️</h3>
+			<h3>🛡️ Defense : {{person.info.defense}} 🛡️</h3>
+			<h3>🔮 Magic : {{person.info.magic}} 🔮</h3>
+			<h3>🔰 Difficulty : {{person.info.difficulty}} 🔰</h3>
+		</div>
+		<!-- <img :src="`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/`+person.image.full"> -->
+		<h2>Character List: </h2>
+		<h2 v-for="u in users" :data-id="u.id" @click="viewBio(u)" id="name">✦{{u.name}}&nbsp;&nbsp;</h2>
+	</div>
+
+
+	<script>
+		fetch('http://ddragon.leagueoflegends.com/cdn/10.24.1/data/en_US/champion.json')
+			.then(response => response.json())
+			.then(json => {
+				console.log(json)
+				app.users = json.data
+				app.person = app.users.Aatrox
+			})
+		let app = new Vue({
+			el: '#app',
+			methods: {
+				viewBio: function (user) {
+					this.person = user
+					// var str = document.getElementById("demo").innerHTML;
+					// var res = str.replace(".png", "_0.jpg");
+					// document.getElementById("demo").innerHTML = res; //ผมลองใช้ดูแล้วภาพไม่เปลี่ยน
+				}
+			},
+			data: {
+				person: {
+					"name": '..loading',
+					"title": '..loading',
+					"info": {
+						"attack": "aaa"
+					}
+				},
+				users:
+				{
+					"name": '..loading',
+					"title": '..loading',
+					"info": {
+						"attack": "aaa"
+					}
+				},
+			}
+		})
+
+	</script>
+</body>
+
+=======
 <!DOCTYPE html>
 <html>
 
@@ -70,4 +144,5 @@
 	</script>
 </body>
 
+>>>>>>> d8397ee08793b08b070e411d45c1a8da51894892
 </html>
